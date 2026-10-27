@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f5f0">
+<title>英语教练</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --ink: #22201c;
+    --muted: #8a857c;
+    --green: #2f6b5e;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+  }
+  .wrap { text-align: center; max-width: 340px; }
+  .logo { font-size: 42px; line-height: 1; margin-bottom: 18px; }
+  h1 { font-size: 22px; font-weight: 600; margin: 0 0 10px; letter-spacing: .5px; }
+  #msg { font-size: 15px; color: var(--muted); margin: 0 0 26px; min-height: 22px; }
+  .btn {
+    display: inline-block;
+    padding: 13px 30px;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: opacity .2s;
+  }
+  .btn:active { opacity: .8; }
+  .hint {
+    margin-top: 26px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .dots::after {
+    content: '';
+    animation: d 1.4s steps(4, end) infinite;
+  }
+  @keyframes d {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">🌿</div>
+    <h1>英语教练</h1>
+    <p id="msg" class="dots">正在连接</p>
+    <a id="link" class="btn" href="#" hidden>手动打开</a>
+    <p class="hint" id="hint"></p>
+  </div>
+<script>
+(async () => {
+  const msg = document.getElementById('msg');
+  const link = document.getElementById('link');
+  const hint = document.getElementById('hint');
+
+  function fail(text) {
+    msg.className = '';
+    msg.textContent = '还没连上';
+    hint.textContent = text;
+  }
+
+  try {
+    const r = await fetch('./url.txt?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('http ' + r.status);
+    const url = (await r.text()).trim();
+    if (!/^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(url)) throw new Error('bad url');
+
+    msg.textContent = '正在打开';
+    link.href = url;
+    link.hidden = false;
+    hint.textContent = '地址没自动跳的话，点上面那个按钮。';
+    setTimeout(() => location.replace(url), 500);
+  } catch (e) {
+    fail('电脑上的 share.cmd 好像没在跑，或者隧道断了一会儿。回电脑前重新双击一次 share.cmd，再刷新这一页。');
+  }
+})();
+</script>
+</body>
+</html>
