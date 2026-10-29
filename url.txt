@@ -1,1 +1,1 @@
-https://tribune-mild-landscapes-warrant.trycloudflare.com
+https://api.trycloudflare.com
