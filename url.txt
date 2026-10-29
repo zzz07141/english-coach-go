@@ -1,1 +1,1 @@
-https://flashing-and-change-appraisal.trycloudflare.com
+https://api.trycloudflare.com
