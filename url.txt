@@ -1,1 +1,1 @@
-https://epa-their-liabilities-preston.trycloudflare.com
+https://api.trycloudflare.com
