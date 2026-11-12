@@ -1,1 +1,1 @@
-https://dad-giant-differ-color.trycloudflare.com
+https://api.trycloudflare.com
