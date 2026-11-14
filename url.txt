@@ -1,1 +1,1 @@
-https://hour-location-folding-unsigned.trycloudflare.com
+https://api.trycloudflare.com
