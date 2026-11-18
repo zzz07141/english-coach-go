@@ -1,1 +1,1 @@
-https://speeches-visits-minerals-nominations.trycloudflare.com
+https://api.trycloudflare.com
