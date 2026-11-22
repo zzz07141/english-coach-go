@@ -1,1 +1,1 @@
-https://wider-involving-everybody-pets.trycloudflare.com
+https://api.trycloudflare.com
