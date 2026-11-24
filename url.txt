@@ -1,1 +1,1 @@
-https://touch-pole-related-second.trycloudflare.com
+https://api.trycloudflare.com
