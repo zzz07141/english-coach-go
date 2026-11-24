@@ -1,1 +1,1 @@
-https://venice-wonder-experts-forbes.trycloudflare.com
+https://api.trycloudflare.com
